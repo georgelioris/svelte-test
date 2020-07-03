@@ -5,6 +5,7 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 
 const production = !process.env.ROLLUP_WATCH;
+const dir = process.env.GH_PAGES ? 'ghbuild/build' : 'public/build';
 
 export default {
   input: 'src/main.js',
@@ -12,7 +13,7 @@ export default {
     sourcemap: true,
     format: 'iife',
     name: 'app',
-    file: 'public/build/bundle.js',
+    file: `${dir}/bundle.js`,
   },
   plugins: [
     svelte({
@@ -21,7 +22,7 @@ export default {
       // we'll extract any component CSS out into
       // a separate file - better for performance
       css: (css) => {
-        css.write('public/build/bundle.css');
+        css.write(`${dir}/bundle.css`);
       },
     }),
 

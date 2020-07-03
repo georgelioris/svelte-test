@@ -3,8 +3,8 @@
   "name": "svelte-app",
   "version": "1.0.0",
   "scripts": {
-    "predeploy": "yarn run build",
-    "deploy": "gh-pages -d public/build",
+    "predeploy": "yarn run rollup -c --environment GH_PAGES",
+    "deploy": "gh-pages -d ghbuild",
     "build": "rollup -c",
     "dev": "rollup -c -w",
     "start": "sirv public"
